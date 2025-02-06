@@ -30,7 +30,7 @@ jobs:
       - name: Package with PyInstaller
         run: |
           # 假设资源文件在 resources 目录下
-          pyinstaller --onefile -w main.py
+          pyinstaller -i "favicon.ico" --onefile -w main.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

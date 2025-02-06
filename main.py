@@ -330,34 +330,31 @@ def 线路数据整理(xlsx_file_name_1="断路器20241126（220千伏开关及5
                                   "pro_2": n2n(row[6])}
     
     
-    str_breaker_500 = "export const breaker_500: { name: string, bdz: string }[] = "
+    str_breaker_500 = "var breaker_500 = "
     str_breaker_500 += json.dumps(breaker_500, ensure_ascii = False)
-    str_line_data_220 = "export const data_base_220: { name: string, start: string, end: string }[] = "
+    str_line_data_220 = "var data_base_220 = "
     str_line_data_220 += json.dumps(line_list_220, ensure_ascii = False)
     # all_bdz_name = [i["start"] for i in line_list_220] + [i["end"] for i in line_list_220]
-    str_bdz_name_220 = "export const data_bdz_220: string[] = "
+    str_bdz_name_220 = "var data_bdz_220 = "
     str_bdz_name_220 += json.dumps(list(bdz_220), ensure_ascii=False)
     
-    str_line_data_500_220 = "export const data_base_500_220: {" +\
-        " name: string, start: string, end: string }[] = "
+    str_line_data_500_220 = "var data_base_500_220 = "
     str_line_data_500_220 += json.dumps(line_list_500, ensure_ascii = False)
-    str_line_data_500_500 = "export const data_base_500_500: " +\
-        "{ name: string, start: string, end: string, side: string," +\
-            " middle: string, p1: string, p2: string }[] = "
+    str_line_data_500_500 = "var data_base_500_500 = "
     str_line_data_500_500 += json.dumps(line_list_500_500, ensure_ascii = False)
     # all_bdz_name = [i["start"] for i in line_list_500] + [i["end"] for i in line_list_500]
-    str_bdz_name_500 = "export const data_bdz_500: string[] = "
+    str_bdz_name_500 = "var data_bdz_500 = "
     str_bdz_name_500 += json.dumps(list(bdz_500), ensure_ascii=False)
     
-    str_stop_reclose = "export const stop_reclose: string[] = "
+    str_stop_reclose = "var stop_reclose = "
     str_stop_reclose += json.dumps(stop_reclose, ensure_ascii=False)
     
     
-    str_transformers_500 = "export const transformers_500 = "
+    str_transformers_500 = "var transformers_500 = "
     str_transformers_500 += json.dumps(transformers_500, ensure_ascii=False)
     
     
-    str_buses_500 = "export const buses_500 = "
+    str_buses_500 = "var buses_500 = "
     str_buses_500 += json.dumps(buses_500, ensure_ascii=False)
     
     file_content = "// 此文件由“整理线路数据脚本.py”自动生成，请勿手动修改。"
@@ -384,27 +381,58 @@ def 线路数据整理(xlsx_file_name_1="断路器20241126（220千伏开关及5
     
     if file_output:
         with open('data.ts', 'w', encoding="utf-8") as f:
-            f.writelines(file_content)
-            # f.writelines("// 此文件由“整理线路数据脚本.py”自动生成，请勿手动修改。")
-            # f.writelines("\n")
-            # f.writelines(str_breaker_500)
-            # f.writelines("\n")
-            # f.writelines(str_line_data_220)
-            # f.writelines("\n")
-            # f.writelines(str_bdz_name_220)
-            # f.writelines("\n")
-            # f.writelines(str_line_data_500_220)
-            # f.writelines("\n")
-            # f.writelines(str_line_data_500_500)
-            # f.writelines("\n")
-            # f.writelines(str_bdz_name_500)
-            # f.writelines("\n")
-            # f.writelines(str_stop_reclose)
-            # f.writelines("\n")
-            # f.writelines(str_transformers_500)
-            # f.writelines("\n")
-            # f.writelines(str_buses_500)
-            # f.writelines("// 此行注释勿删，定位用")
+            str_breaker_500 = "export const breaker_500: { name: string, bdz: string }[] = "
+            str_breaker_500 += json.dumps(breaker_500, ensure_ascii = False)
+            str_line_data_220 = "export const data_base_220: { name: string, start: string, end: string }[] = "
+            str_line_data_220 += json.dumps(line_list_220, ensure_ascii = False)
+            # all_bdz_name = [i["start"] for i in line_list_220] + [i["end"] for i in line_list_220]
+            str_bdz_name_220 = "export const data_bdz_220: string[] = "
+            str_bdz_name_220 += json.dumps(list(bdz_220), ensure_ascii=False)
+            
+            str_line_data_500_220 = "export const data_base_500_220: {" +\
+                " name: string, start: string, end: string }[] = "
+            str_line_data_500_220 += json.dumps(line_list_500, ensure_ascii = False)
+            str_line_data_500_500 = "export const data_base_500_500: " +\
+                "{ name: string, start: string, end: string, side: string," +\
+                    " middle: string, p1: string, p2: string }[] = "
+            str_line_data_500_500 += json.dumps(line_list_500_500, ensure_ascii = False)
+            # all_bdz_name = [i["start"] for i in line_list_500] + [i["end"] for i in line_list_500]
+            str_bdz_name_500 = "export const data_bdz_500: string[] = "
+            str_bdz_name_500 += json.dumps(list(bdz_500), ensure_ascii=False)
+            
+            str_stop_reclose = "export const stop_reclose: string[] = "
+            str_stop_reclose += json.dumps(stop_reclose, ensure_ascii=False)
+            
+            
+            str_transformers_500 = "export const transformers_500 = "
+            str_transformers_500 += json.dumps(transformers_500, ensure_ascii=False)
+            
+            
+            str_buses_500 = "export const buses_500 = "
+            str_buses_500 += json.dumps(buses_500, ensure_ascii=False)
+            
+            file_content2 = "// 此文件由“整理线路数据脚本.py”自动生成，请勿手动修改。"
+            file_content2 += "\n"
+            file_content2 += str_breaker_500
+            file_content2 += "\n"
+            file_content2 += str_line_data_220
+            file_content2 += "\n"
+            file_content2 += str_bdz_name_220
+            file_content2 += "\n"
+            file_content2 += str_line_data_500_220
+            file_content2 += "\n"
+            file_content2 += str_line_data_500_500
+            file_content2 += "\n"
+            file_content2 += str_bdz_name_500
+            file_content2 += "\n"
+            file_content2 += str_stop_reclose
+            file_content2 += "\n"
+            file_content2 += str_transformers_500
+            file_content2 += "\n"
+            file_content2 += str_buses_500
+            file_content2 += "\n"
+            file_content2 += "// 此行注释勿删，定位用"
+            f.writelines(file_content2)
     return file_content
 
 def replace_text_in_file(file, s, start_delimiter, end_delimiter):
