@@ -332,10 +332,10 @@ def 线路数据整理(xlsx_file_name_1="断路器20241126（220千伏开关及5
     
     str_breaker_500 = "var breaker_500 = "
     str_breaker_500 += json.dumps(breaker_500, ensure_ascii = False)
-    str_line_data_220 = "var data_base_220 = "
+    str_line_data_220 = "var data_data_base_220 = "
     str_line_data_220 += json.dumps(line_list_220, ensure_ascii = False)
     # all_bdz_name = [i["start"] for i in line_list_220] + [i["end"] for i in line_list_220]
-    str_bdz_name_220 = "var data_bdz_220 = "
+    str_bdz_name_220 = "var data_data_bdz_220 = "
     str_bdz_name_220 += json.dumps(list(bdz_220), ensure_ascii=False)
     
     str_line_data_500_220 = "var data_base_500_220 = "
